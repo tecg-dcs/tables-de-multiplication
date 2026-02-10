@@ -3,15 +3,11 @@ function validated(): array
 {
     $errors = [];
 
-    if (!ctype_digit($_GET['nbvalues'])) {
-        $errors['values'] = 'Le nombre de valeurs doit être un nombre entier.';
-    } else if ((int)$_GET['nbvalues'] <= 1) {
-        $errors['values'] = 'Le nombre de valeur doit être supérieur à 1.';
+    if (!filter_var($_GET['nbvalues'], FILTER_VALIDATE_INT, ['options' => ['min_range' => 1, 'max_range' => 10]])) {
+        $errors['values'] = 'Le nombre de valeurs doit être un nombre entier supérieur à 0 et inférieur à 11.';
     }
-    if (!ctype_digit($_GET['nbtables'])) {
-        $errors['tables'] = 'Le nombre de tables doit être un nombre entier.';
-    } else if ((int)$_GET['nbtables'] <= 1) {
-        $errors['tables'] = 'Le nombre de valeur doit être supérieur à 1.';
+    if (!filter_var($_GET['nbtables'], FILTER_VALIDATE_INT, ['options' => ['min_range' => 1, 'max_range' => 10]])) {
+        $errors['tables'] = 'Le nombre de tables doit être un nombre entier supérieur à 0 et inférieur à 11.';
     }
 
     if (count($errors)) return compact('errors');

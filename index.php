@@ -1,7 +1,7 @@
 <?php
 require 'validation.php';
 
-define('SITE_TITLE', 'Les tables de multiplication');
+const SITE_TITLE = 'Les tables de multiplication';
 
 if (isset($_GET['nbvalues'], $_GET['nbtables'])) {
     $data = validated();
@@ -13,13 +13,13 @@ if (isset($_GET['nbvalues'], $_GET['nbtables'])) {
 <!-- Début du template d’affichage -->
 
 <!DOCTYPE html>
-<html lang="fr-be">
+<html lang="fr-BE">
 <head>
     <meta charset="utf-8">
     <title><?= SITE_TITLE ?></title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
 <body>
 <main class="container">
@@ -32,7 +32,7 @@ if (isset($_GET['nbvalues'], $_GET['nbtables'])) {
                 <input class="form-control" id="nbtables" type="text" name="nbtables" autofocus
                        value="<?= $old['nbtables'] ?? 2 ?>">
                 <?php if (isset($data['errors']['tables'])): ?>
-                    <span class="help-block"><?= $data['errors']['tables'] ?></span>
+                    <span class="text-danger"><?= $data['errors']['tables'] ?></span>
                 <?php endif ?>
             </div>
             <div class="mt-3 form-group<?= isset($data['errors']['values']) ? ' has-error' : '' ?>">
@@ -40,7 +40,7 @@ if (isset($_GET['nbvalues'], $_GET['nbtables'])) {
                 <input class="form-control" id="nbvalues" type="text" name="nbvalues"
                        value="<?= $old['nbvalues'] ?? 2 ?>">
                 <?php if (isset($data['errors']['values'])): ?>
-                    <span class="help-block"><?= $data['errors']['values'] ?></span>
+                    <span class="text-danger"><?= $data['errors']['values'] ?></span>
                 <?php endif ?>
             </div>
             <button class="mt-4 btn btn-primary" type="submit">Afficher les tables</button>
