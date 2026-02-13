@@ -28,16 +28,16 @@ if (isset($_GET['nbvalues'], $_GET['nbtables'])) {
         <h2>Indiquez quelles tables vous souhaitez</h2>
         <form action="index.php" method="get">
             <div class="mt-3 form-group<?= isset($data['errors']['tables']) ? ' has-error' : '' ?>">
-                <label class="control-label" for="nbtables">Nombre de tables : </label>
-                <input class="form-control" id="nbtables" type="text" name="nbtables" autofocus
+                <label class="control-label mb-1" for="nbtables">Nombre de tables (entre 1 et 10) : </label>
+                <input class="form-control mb-1" id="nbtables" type="number" min="1" max="10" step="1" name="nbtables" autofocus
                        value="<?= $old['nbtables'] ?? 2 ?>">
                 <?php if (isset($data['errors']['tables'])): ?>
                     <span class="text-danger"><?= $data['errors']['tables'] ?></span>
                 <?php endif ?>
             </div>
             <div class="mt-3 form-group<?= isset($data['errors']['values']) ? ' has-error' : '' ?>">
-                <label class="control-label" for="nbvalues">Nombre de valeurs : </label>
-                <input class="form-control" id="nbvalues" type="text" name="nbvalues"
+                <label class="control-label mb-1" for="nbvalues">Nombre de valeurs (entre 1 et 10) : </label>
+                <input class="form-control mb-1" id="nbvalues" type="number" min="1" max="10" step="1" name="nbvalues"
                        value="<?= $old['nbvalues'] ?? 2 ?>">
                 <?php if (isset($data['errors']['values'])): ?>
                     <span class="text-danger"><?= $data['errors']['values'] ?></span>
